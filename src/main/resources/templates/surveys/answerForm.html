@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org"
+      th:replace="~{fragments/layout :: layout(~{::title}, ~{::body})}">
+<head>
+    <title>回答フォーム | ペット満足度調査アプリケーション</title>
+</head>
+<body>
+<h1 class="mt-3">アンケート回答フォーム</h1>
+<form action="#" th:action="@{/surveys}" th:method="post" th:object="${surveyForm}">
+    <div class="mt-3">
+        <label for="nameInput" class="form-label">名前</label>
+        <input type="text" id="nameInput" th:field="*{name}" class="form-control"
+               th:classappend="${#fields.hasErrors('name')} ? is-invalid">
+        <p class="invalid-feedback" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">(error)</p>
+    </div>
+    <div class="mt-3">
+        <label for="ageInput" class="form-label">年齢</label>
+        <input type="text" id="ageInput" th:field="*{age}" class="form-control"
+               th:classappend="${#fields.hasErrors('age')} ? is-invalid">
+        <p class="invalid-feedback" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">(error)</p>
+    </div>
+    <div class="mt-3">
+        <label for="sexInput" class="form-label">性別</label><br>
+        <input type="radio" name="sex" value=1>オス
+        <input type="radio" name="sex" value=2>メス
+        <input type="radio" name="sex" value=3>不明
+        <p class="invalid-feedback" th:if="${#fields.hasErrors('sex')}" th:errors="*{sex}">(error)</p>
+    </div>
+    <div class="mt-3">
+        <label for="scoreInput" class="form-label">満足度</label><br>
+        <input type="radio" name="score" value=1>とても不満
+        <input type="radio" name="score" value=2>不満
+        <input type="radio" name="score" value=3>普通
+        <input type="radio" name="score" value=4>満足
+        <input type="radio" name="score" value=5>とても満足
+        <p class="invalid-feedback" th:if="${#fields.hasErrors('score')}" th:errors="*{score}">(error)</p>
+    </div>
+    <div class="mt-3">
+        <label for="messageInput" class="form-label">意見</label>
+        <textarea type="text" id="messageInput" row="10" th:field="*{message}" class="form-control"
+                  th:classappend="${#fields.hasErrors('message')} ? is-invalid"></textarea>
+        <p class="invalid-feedback" th:if="${#fields.hasErrors('message')}" th:errors="*{message}">(error)</p>
+    </div>
+    <div class="mt-3">
+        <button type="submit" class="btn btn-primary">回答する</button>
+        <a href="./list.html" th:href="@{/surveys}" class="btn btn-secondary">キャンセル</a>
+    </div>
+</form>
+</body>
+</html>

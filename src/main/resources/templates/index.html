@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org"
+      th:replace="~{fragments/layout :: layout(~{::title}, ~{::body})}">
+<head>
+    <title>トップページ | ペット満足度調査アプリケーション</title>
+</head>
+<body>
+<h1 class="mt-3">ペット満足度調査アプリケーション</h1>
+<ul>
+  <li>
+    <a href="surveys/List.html" th:href="@{/surveys}">回答一覧</a>
+  </li>
+</ul>
+</body>
+</html>
